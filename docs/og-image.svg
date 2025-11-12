@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1F3A5F"/>
+      <stop offset="100%" stop-color="#25476F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)"/>
+  <g>
+    <circle cx="140" cy="120" r="6" fill="#C9A227"/>
+    <text x="170" y="150" fill="#F4F1EA" font-family="'Cormorant Garamond', serif" font-size="88" font-style="italic" font-weight="600">Hotel Sheraton Salta</text>
+    <text x="170" y="210" fill="#E6E2D7" font-family="Inter, system-ui, sans-serif" font-size="28" opacity="0.9">Elegancia y confort en el corazón de Salta, Argentina</text>
+  </g>
+  <rect x="170" y="260" width="860" height="2" fill="#C9A227" opacity="0.8"/>
+  <g transform="translate(170,310)" fill="#F4F1EA" font-family="Inter, system-ui, sans-serif" font-size="20" opacity="0.95">
+    <text x="0"  y="0">• Habitaciones de categoría</text>
+    <text x="330" y="0">• Piscina y spa</text>
+    <text x="600" y="0">• Restaurante & bar</text>
+  </g>
+</svg>

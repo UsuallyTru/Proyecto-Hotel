@@ -5,4 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // Needed for GitHub Pages under /Proyecto-Hotel/
+  base: '/Proyecto-Hotel/',
+  build: {
+    outDir: 'docs'
+  }
 })
