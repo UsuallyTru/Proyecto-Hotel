@@ -1,0 +1,221 @@
+@import "tailwindcss";
+/* Fonts are loaded via index.html (Inter & Playfair Display) */
+
+@theme {
+  --color-charcoal: #0b0f14;
+  --color-ink: #111827;
+  --color-graysoft: #cbd5e1;
+  --color-champagne: #e8d8b1;
+  --color-surface: #0e1319;
+  --color-surface2: #141a22;
+  --color-border: rgba(255,255,255,0.06);
+
+  --font-inter: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+
+  --container-2xl: 80rem;
+
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  --shadow-brand-sm: 0 6px 16px rgba(0,0,0,0.12);
+  --shadow-brand: 0 10px 30px rgba(0,0,0,0.18);
+  --shadow-elevated: 0 12px 32px rgba(0,0,0,0.22);
+}
+
+html { scroll-behavior: smooth; }
+
+html, body, #root { height: 100%; }
+/* Avoid horizontal scrollbar due to full-bleed sections and viewport rounding */
+html, body { overflow-x: hidden; width: 100%; }
+#root, main { overflow-x: clip; }
+
+body {
+  /* Dark mode por defecto */
+  background-color: var(--color-charcoal);
+  color: var(--color-graysoft);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+/* Subtle background accents */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background: radial-gradient(60% 40% at 20% 10%, rgba(232,216,177,0.08) 0%, rgba(0,0,0,0) 60%),
+              radial-gradient(70% 50% at 80% -10%, rgba(17,24,39,0.18) 0%, rgba(0,0,0,0) 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.font-display { font-family: 'Playfair Display', serif; }
+.font-brand { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: 0.2px; }
+h1, h2, h3 { font-family: 'Playfair Display', serif; letter-spacing: -0.01em; }
+
+.container-page {
+  max-width: 80rem; /* ~max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* sm */
+}
+
+@media (min-width: 640px) {
+  .container-page { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .container-page { padding-left: 2rem; padding-right: 2rem; }
+}
+
+/* Buttons */
+.btn-primary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+.btn-primary { background: var(--color-champagne); color: var(--color-ink); box-shadow: var(--shadow-soft); }
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-primary:active { filter: brightness(0.95); }
+.btn-primary:focus-visible, .btn-ghost:focus-visible { outline: 2px solid rgba(232,216,177,0.4); outline-offset: 2px; }
+.btn-ghost { background: transparent; color: var(--color-graysoft); border: 1px solid var(--color-border); }
+.btn-ghost:hover { background-color: rgba(255,255,255,0.05); }
+
+.navbar-dark {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+  background-color: rgba(11,15,20,0.8);
+  color: var(--color-graysoft);
+  -webkit-backdrop-filter: saturate(1.5) blur(8px);
+  backdrop-filter: saturate(1.5) blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+.navbar-link { color: var(--color-graysoft); }
+.navbar-link:hover { opacity: .8; }
+
+/* Global subtle hover background for interactive blocks (opt-in via class) */
+.hover-bg-soft:hover { background-color: rgba(255,255,255,0.05); }
+
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(232,216,177,0) 0%, rgba(232,216,177,0.9) 50%, rgba(232,216,177,0) 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+.link-underline:hover::after { transform: scaleX(1); }
+
+.navbar-transparent { position: fixed; top:0; left:0; right:0; z-index:30; background: transparent; color: #fff; transition: color .2s ease, background .2s ease; }
+.navbar-link-invert { color: #fff; }
+.navbar-solid { position: fixed; top:0; left:0; right:0; z-index:30; background: var(--color-charcoal); color: #fff; }
+
+.full-bleed {
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+@supports (width: 100dvw) {
+  .full-bleed { width: 100dvw; max-width: 100dvw; margin-left: -50dvw; margin-right: -50dvw; }
+}
+
+.text-shadow-lg { text-shadow: 0 2px 10px rgba(0,0,0,0.35); }
+.text-shadow-xl { text-shadow: 0 3px 14px rgba(0,0,0,0.5); }
+
+/* Aspect ratio helpers */
+.ar-16x9 { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; height: auto; display: block; }
+.ar-3x2 { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; height: auto; display: block; }
+
+/* Soft shadows and hover polish */
+.shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+/* Inputs focus */
+input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(232,216,177,0.22); border-color: rgba(232,216,177,0.5); }
+
+/* Force light calendar UI so los números del calendario sean legibles */
+/* Mantener calendario legible en dark */
+input[type="date"] { color-scheme: dark; }
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.9); opacity: 0.9; }
+
+.card {
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.glass {
+  background: rgba(14,19,25,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+
+/* Inputs on dark */
+input, select, textarea {
+  background: var(--color-surface2);
+  color: var(--color-graysoft);
+  border: 1px solid var(--color-border);
+}
+
+/* Tipografía: forzar "text-black" a tono claro agradable en dark theme */
+.text-black { color: #e5e7eb !important; }
+.text-gray-700 { color: #cbd5e1 !important; }
+
+/* Animations */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in-up { animation: fadeInUp 600ms ease forwards; }
+.fade-in { animation: fadeIn 400ms ease forwards; }
+
+.hover-lift { transition: transform 200ms ease, box-shadow 200ms ease; }
+.hover-lift:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+
+img.smooth { transition: opacity 400ms ease; }
+
+/* Global transitions */
+* { transition: all 200ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Generous spacing utilities */
+.section-pad { padding-block: 5rem; }
+.stack-lg { gap: 2.5rem; }
